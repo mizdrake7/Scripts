@@ -22,22 +22,30 @@ echo "    $META_DIR"
 
 # NetHunter modules
 MODULES=(
+# Core WiFi stack
 cfg80211.ko
 mac80211.ko
-
+# Atheros
 ath.ko
 ath9k_hw.ko
 ath9k_common.ko
 ath9k_htc.ko
-
+# Ralink / MediaTek
 rt2x00lib.ko
 rt2x00usb.ko
 rt2800lib.ko
 rt2800usb.ko
-
-rtl8187.ko
-
 mt7601u.ko
+# Realtek RTL8187
+rtl8187.ko
+# Realtek RTL8188EU
+rtl8188eu.ko
+# Realtek RTL8812AU / 88XXAU
+8812au.ko
+rtl8812au.ko
+# Realtek RTL8822BU / 88X2BU
+88x2bu.ko
+rtl88x2bu.ko
 )
 
 echo "[*] Copying modules..."
