@@ -12,6 +12,15 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 TC_DIR="$SCRIPT_DIR/tc/zyc_clang"
 export HERMETIC_TOOLCHAIN=0
 
+# Patch with latest KernelSU-Next
+  echo "Applying latest KernelSU-Next patch"
+if ! [ -d "$KERNEL_DIR"/KernelSU ]; then
+  curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -
+else
+  echo -e "KernelSU-Next patch failed, stopping build now..."
+  exit 1
+fi
+
 if [ ! -x "$TC_DIR/bin/clang" ] && [ ! -x "$TC_DIR/bin/clang-14" ]; then
     echo "Downloading ZyC Clang 14..."
     mkdir -p "$TC_DIR"
